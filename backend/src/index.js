@@ -4,10 +4,21 @@ require("dotenv").config()
 
 const app = express()
 
-app.use(cors())
+
+const allowedOrigins = [
+  process.env.FRONTEND_URL,        
+  "http://localhost:5173",         
+  "http://localhost:3000",          
+].filter(Boolean)
+
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true
+}))
+
 app.use(express.json())
 
-// routes
+
 const authRoutes = require("./routes/auth")
 const projectRoutes = require("./routes/projects")
 const taskRoutes = require("./routes/tasks")

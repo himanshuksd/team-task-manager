@@ -2,9 +2,8 @@ import { useState, useEffect } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import Navbar from "../components/Navbar"
 
-const API = process.env.REACT_APP_API_URL || "http://localhost:5000/api"
-
-// TODO: maybe split this into smaller components later
+// ✅ Fixed - using Vite env variable
+const API = import.meta.env.VITE_API_URL || "http://localhost:5000/api"
 
 function ProjectPage({ token, user, onLogout }) {
   const { id } = useParams()
@@ -217,7 +216,6 @@ function ProjectPage({ token, user, onLogout }) {
       <Navbar user={user} onLogout={onLogout} />
 
       <div className="max-w-6xl mx-auto px-4 py-8">
-        {/* header */}
         <div className="flex items-start justify-between mb-6">
           <div>
             <p
@@ -239,7 +237,6 @@ function ProjectPage({ token, user, onLogout }) {
           </button>
         </div>
 
-        {/* add task form */}
         {showTaskForm && (
           <div className="bg-white rounded shadow p-5 mb-6">
             <h3 className="font-semibold text-gray-700 mb-4">New Task</h3>
@@ -312,7 +309,6 @@ function ProjectPage({ token, user, onLogout }) {
           </div>
         )}
 
-        {/* tab buttons for mobile, columns on desktop */}
         <div className="md:hidden flex gap-2 mb-4">
           {["TODO", "IN_PROGRESS", "DONE"].map((s) => (
             <button
@@ -327,7 +323,6 @@ function ProjectPage({ token, user, onLogout }) {
           ))}
         </div>
 
-        {/* kanban columns */}
         <div className="hidden md:grid grid-cols-3 gap-4 mb-8">
           {["TODO", "IN_PROGRESS", "DONE"].map((status) => (
             <div key={status} className="bg-gray-100 rounded p-3">
@@ -392,7 +387,6 @@ function ProjectPage({ token, user, onLogout }) {
           ))}
         </div>
 
-        {/* mobile task list */}
         <div className="md:hidden space-y-2 mb-8">
           {tasksByStatus[activeTab].map((task) => (
             <div key={task.id} className="bg-white rounded shadow p-3">
@@ -418,7 +412,6 @@ function ProjectPage({ token, user, onLogout }) {
           ))}
         </div>
 
-        {/* members section */}
         <div className="bg-white rounded shadow p-5">
           <div className="flex items-center justify-between mb-4">
             <h2 className="font-semibold text-gray-700">

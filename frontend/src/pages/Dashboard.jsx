@@ -2,7 +2,8 @@ import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import Navbar from "../components/Navbar"
 
-const API = process.env.REACT_APP_API_URL || "http://localhost:5000/api"
+
+const API = import.meta.env.VITE_API_URL || "http://localhost:5000/api"
 
 function Dashboard({ token, user, onLogout }) {
   const navigate = useNavigate()
@@ -59,7 +60,6 @@ function Dashboard({ token, user, onLogout }) {
         return
       }
 
-      // go to the new project right away
       navigate(`/projects/${data.id}`)
     } catch (err) {
       console.log(err)
@@ -113,7 +113,6 @@ function Dashboard({ token, user, onLogout }) {
       <div className="max-w-5xl mx-auto px-4 py-8">
         <h1 className="text-2xl font-bold text-gray-800 mb-6">Dashboard</h1>
 
-        {/* stats */}
         <div className="grid grid-cols-3 gap-4 mb-8">
           <div className="bg-white rounded shadow p-4 text-center">
             <p className="text-3xl font-bold text-blue-600">{tasks.length}</p>
@@ -132,11 +131,9 @@ function Dashboard({ token, user, onLogout }) {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* tasks section */}
           <div className="md:col-span-2">
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-lg font-semibold text-gray-700">My Tasks</h2>
-
               <div className="flex gap-1 text-sm">
                 {["ALL", "TODO", "IN_PROGRESS", "DONE"].map((s) => (
                   <button
@@ -205,7 +202,6 @@ function Dashboard({ token, user, onLogout }) {
             )}
           </div>
 
-          {/* projects section */}
           <div>
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-lg font-semibold text-gray-700">My Projects</h2>

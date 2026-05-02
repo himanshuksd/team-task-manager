@@ -1,7 +1,8 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 
-const API = process.env.REACT_APP_API_URL || "http://localhost:5000/api"
+
+const API = import.meta.env.VITE_API_URL || "http://localhost:5000/api"
 
 function Signup({ onLogin }) {
   const [name, setName] = useState("")
@@ -46,7 +47,7 @@ function Signup({ onLogin }) {
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       <div className="bg-white p-8 rounded shadow-md w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Create Account</h2>
+        <h2 className="text-2xl font-bold mb-6 text-center text.gray-800">Create Account</h2>
 
         {error && (
           <p className="bg-red-100 text-red-600 text-sm px-3 py-2 rounded mb-4">{error}</p>

@@ -5,7 +5,12 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon src/index.js",
+    "build": "prisma generate",
+    "postinstall": "prisma generate"
+  },
+  "engines": {
+    "node": "20.x"
   },
   "dependencies": {
     "@prisma/client": "^5.10.0",

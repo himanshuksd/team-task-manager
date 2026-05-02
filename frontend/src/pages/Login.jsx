@@ -1,7 +1,8 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 
-const API = process.env.REACT_APP_API_URL || "http://localhost:5000/api"
+
+const API = import.meta.env.VITE_API_URL || "http://localhost:5000/api"
 
 function Login({ onLogin }) {
   const [email, setEmail] = useState("")
